@@ -1,0 +1,37 @@
+@{
+    Offre offre = ViewBag.offre;
+    Consultation consultation = ViewBag.consultation;
+    List<Etat_personne> liste_etat_personne = consultation.getListe_etat_personne();
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultat</title>
+</head>
+<body>
+    
+    <p>offre : @offre.getNom()</p>
+    <p>reste : @consultation.getBudget()</p>
+
+
+    <table border="1">
+        <tr>
+            <th>dent</th>
+            <th>etat</th>
+        </tr>
+
+        @foreach(Etat_personne etat in liste_etat_personne){
+            <tr>
+                <td>@etat.getId_dent()</td>
+                <td>@etat.getEtat()</td>
+            </tr>
+        }
+    </table>
+
+
+</body>
+</html>
