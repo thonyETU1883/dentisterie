@@ -1,0 +1,41 @@
+@{
+    List<Personne> liste_personne = ViewBag.liste_personne;
+    List<Dent> liste_dent = ViewBag.liste_dent;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dent</title>
+</head>
+<body>
+    
+
+    <form action="InsertionEtatPersonne" method="post">
+        <p>Personne : 
+
+            <select name="id_personne" id="">
+                @foreach(Personne personne in liste_personne){ 
+                    <option value="@(personne.getId_personne())">@personne.getNom()</option>
+                }
+            </select>
+
+        </p>
+
+
+        @foreach(Dent dent in liste_dent){
+            <p>@dent.getId_dent() : <input type="number" name="dent[@dent.getId_dent()]" value="1"></p>
+        }
+
+
+        <input type="submit" value="valider">
+    </form>
+
+
+
+
+
+</body>
+</html>

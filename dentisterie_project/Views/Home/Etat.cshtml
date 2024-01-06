@@ -1,0 +1,51 @@
+@{
+    List<Etat_personne> liste_etat_personne =  ViewBag.liste_etat_personne;
+    List<Offre> liste_offre = ViewBag.liste_offre;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etat</title>
+</head>
+<body>
+
+
+    <table border="1">
+        <tr>
+            <td>dent</td>
+            <td>etat</td>
+        </tr>
+
+
+        @foreach(Etat_personne etat in liste_etat_personne){
+            <tr>
+                <td>@etat.getId_dent()</td>
+                <td>@etat.getEtat()</td>
+            </tr>
+        }
+
+    </table>
+
+
+    <form action="vers_resultat" method="post">
+
+        <p>Budget : <input type="text" name="budget"></p>
+        <p>
+            Offre : 
+            <select name="id_offre" id="">
+                @foreach(Offre offre in liste_offre){
+                    <option value="@offre.getId_offre()">@offre.getNom()</option>
+                }
+            </select>
+
+            <input type="hidden" name="id_personne" value="@ViewBag.id_personne">
+            <input type="submit" value="proposition">
+        </p>
+
+    </form>
+    
+</body>
+</html>
